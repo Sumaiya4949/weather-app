@@ -1,13 +1,10 @@
-import WeatherPoster from "./WeatherPoster";
+import WeatherReport from "./WeatherReport";
+import "antd/dist/antd.css";
 
 function App() {
   return (
     <div>
-      <WeatherPoster
-        imgUrl={
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-        }
-      />
+      <WeatherReport />
     </div>
   );
 }
