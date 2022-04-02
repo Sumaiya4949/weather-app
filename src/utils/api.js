@@ -1,6 +1,22 @@
 import axios from "axios";
 
+function saveLocally(api, lat, lon, data) {
+  sessionStorage.setItem(`${api}-${lat}-${lon}`, JSON.stringify(data));
+}
+
+function hasLocally(api, lat, lon) {
+  return !!sessionStorage.getItem(`${api}-${lat}-${lon}`);
+}
+
+function getLocally(api, lat, lon) {
+  return JSON.parse(sessionStorage.getItem(`${api}-${lat}-${lon}`));
+}
+
 export const fetchCurrentWeather = async (lat, lon) => {
+  if (hasLocally("current-weather", lat, lon)) {
+    return getLocally("current-weather", lat, lon);
+  }
+
   const options = {
     method: "GET",
     url: "https://weatherbit-v1-mashape.p.rapidapi.com/current",
@@ -24,7 +40,7 @@ export const fetchCurrentWeather = async (lat, lon) => {
     ob_time,
   } = weatherReport;
 
-  return {
+  const formattedReport = {
     title: weather.description,
     temperature: temp,
     imgUrl: `icons/${weather.icon}.png`,
@@ -35,9 +51,17 @@ export const fetchCurrentWeather = async (lat, lon) => {
     city: city_name,
     date: new Date(`${ob_time} UTC`).toLocaleString(),
   };
+
+  saveLocally("current-weather", lat, lon, formattedReport);
+
+  return formattedReport;
 };
 
 export const fetchWeatherForecast = async (lat, lon) => {
+  if (hasLocally("forecast", lat, lon)) {
+    return getLocally("forecast", lat, lon);
+  }
+
   const options = {
     method: "GET",
     url: "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly",
@@ -59,6 +83,8 @@ export const fetchWeatherForecast = async (lat, lon) => {
       time,
     };
   });
+
+  saveLocally("forecast", lat, lon, processedForecast);
 
   return processedForecast;
 };
