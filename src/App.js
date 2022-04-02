@@ -1,5 +1,5 @@
 import "antd/dist/antd.css";
-import CurrentWeatherPanel from "./CurrentWeatherPanel";
+import CurrentWeatherPanel from "./components/CurrentWeatherPanel";
 
 function App() {
   return (
