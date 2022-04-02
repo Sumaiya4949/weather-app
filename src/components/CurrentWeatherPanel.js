@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import WeatherReport from "./WeatherReport";
 import LocationInputForm from "./LocationInputForm";
-import { Result, Row, Col } from "antd";
+import { Result, Row, Col, Card } from "antd";
 import { fetchCurrentWeather } from "../utils/api";
-import WeatherSummery from "./WeatherSummery";
 import FutureWeatherForecast from "./FutureWeatherForecast";
 
 const fakeData = {
@@ -19,7 +18,7 @@ const fakeData = {
 };
 
 const CurrentWeatherPanel = (props) => {
-  const [currentWeatherReport, setCurrentWeatherReport] = useState(fakeData);
+  const [currentWeatherReport, setCurrentWeatherReport] = useState(null);
   const [geoLocation, setGeoLocation] = useState(null);
 
   function updateLocation(lat, lon) {
@@ -51,10 +50,9 @@ const CurrentWeatherPanel = (props) => {
     <Row>
       <Col span={16}>
         {currentWeatherReport === null ? (
-          <Result
-            status="warning"
-            title="No weather report available for the location."
-          />
+          <Card style={{ margin: "20px" }}>
+            <Result title="No weather report available for the location." />
+          </Card>
         ) : (
           <WeatherReport report={currentWeatherReport} />
         )}
