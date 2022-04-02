@@ -6,7 +6,7 @@ const { Title } = Typography;
 const WeatherSummery = (props) => {
   const { time, date, iconUrl } = props;
   return (
-    <Card style={{ margin: "20px" }}>
+    <Card bordered={false}>
       <Meta
         avatar={<Avatar src={iconUrl} size={100} />}
         title={<Title>{time}</Title>}

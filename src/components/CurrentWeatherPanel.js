@@ -4,6 +4,7 @@ import LocationInputForm from "./LocationInputForm";
 import { Result, Row, Col } from "antd";
 import { fetchCurrentWeather } from "../utils/api";
 import WeatherSummery from "./WeatherSummery";
+import FutureWeatherForecast from "./FutureWeatherForecast";
 
 const fakeData = {
   title: "Cloudy",
@@ -62,10 +63,12 @@ const CurrentWeatherPanel = (props) => {
       </Col>
 
       <Col span={8}>
-        <WeatherSummery
-          time="12:14"
-          date="20-20-2022"
-          iconUrl={"icons/a01d.png"}
+        <FutureWeatherForecast
+          forecastList={[
+            { date: "12.12.2022", time: "13:20", iconUrl: "icons/a01d.png" },
+            { date: "12.12.2022", time: "13:20", iconUrl: "icons/a01d.png" },
+            { date: "12.12.2022", time: "13:20", iconUrl: "icons/a01d.png" },
+          ]}
         />
       </Col>
     </Row>
