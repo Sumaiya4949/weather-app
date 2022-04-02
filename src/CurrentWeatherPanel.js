@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WeatherReport from "./WeatherReport";
 import LocationInputForm from "./LocationInputForm";
 import { Result } from "antd";
@@ -26,6 +26,15 @@ const CurrentWeatherPanel = (props) => {
       long,
     });
   }
+
+  useEffect(
+    function fetchCurrentWeather() {
+      if (geoLocation !== null) {
+        console.log("fetching weather data");
+      }
+    },
+    [geoLocation]
+  );
 
   return (
     <div>
