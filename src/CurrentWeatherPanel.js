@@ -16,6 +16,7 @@ const fakeData = {
 
 const CurrentWeatherPanel = (props) => {
   const [currentWeatherReport, setCurrentWeatherReport] = useState(fakeData);
+
   return <WeatherReport report={currentWeatherReport} />;
 };
 
