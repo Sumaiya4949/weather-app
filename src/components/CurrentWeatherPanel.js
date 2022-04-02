@@ -4,6 +4,18 @@ import LocationInputForm from "./LocationInputForm";
 import { Result } from "antd";
 import { fetchCurrentWeather } from "../utils/api";
 
+const fakeData = {
+  title: "Cloudy",
+  temperature: 60,
+  imgUrl: "icons/s04d.png",
+  humidity: 100,
+  airPressure: 76,
+  country: "Germany",
+  state: "Saxony",
+  city: "Chemnitz",
+  date: "10.12.2022",
+};
+
 const CurrentWeatherPanel = (props) => {
   const [currentWeatherReport, setCurrentWeatherReport] = useState(null);
   const [geoLocation, setGeoLocation] = useState(null);
