@@ -4,6 +4,7 @@ import LocationInputForm from "./LocationInputForm";
 import { Result, Row, Col, Card } from "antd";
 import { fetchCurrentWeather, fetchWeatherForecast } from "../utils/api";
 import FutureWeatherForecast from "./FutureWeatherForecast";
+import { AntCloudOutlined } from "@ant-design/icons";
 
 const fakeReport = {
   title: "Cloudy",
@@ -76,7 +77,10 @@ const CurrentWeatherPanel = (props) => {
       <Col span={16}>
         {currentWeatherReport === null ? (
           <Card style={{ margin: "20px" }}>
-            <Result title="No weather report available for the location." />
+            <Result
+              title="No weather report available for the specified location."
+              icon={<AntCloudOutlined />}
+            />
           </Card>
         ) : (
           <WeatherReport report={currentWeatherReport} />
