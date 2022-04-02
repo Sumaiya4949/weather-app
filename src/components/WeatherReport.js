@@ -30,7 +30,6 @@ const WeatherReport = (props) => {
             description="Current weather report at specified location"
           />
         }
-        style={{ maxWidth: "700px" }}
         hoverable={true}
         bordered={true}
       >

@@ -9,11 +9,7 @@ const LocationInputForm = (props) => {
   }
 
   return (
-    <Card
-      style={{ maxWidth: "700px", margin: "20px" }}
-      hoverable={true}
-      bordered={true}
-    >
+    <Card style={{ margin: "20px" }} hoverable={true} bordered={true}>
       <Form
         style={{ maxWidth: "400px" }}
         name="wrap"

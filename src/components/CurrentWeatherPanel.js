@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import WeatherReport from "./WeatherReport";
 import LocationInputForm from "./LocationInputForm";
-import { Result } from "antd";
+import { Result, Row, Col } from "antd";
 import { fetchCurrentWeather } from "../utils/api";
 
 const fakeData = {
@@ -46,17 +46,22 @@ const CurrentWeatherPanel = (props) => {
   );
 
   return (
-    <div>
-      {currentWeatherReport === null ? (
-        <Result
-          status="warning"
-          title="No weather report available for the location."
-        />
-      ) : (
-        <WeatherReport report={currentWeatherReport} />
-      )}
-      <LocationInputForm onSubmit={updateLocation} />
-    </div>
+    <Row>
+      <Col span={16}>
+        {currentWeatherReport === null ? (
+          <Result
+            status="warning"
+            title="No weather report available for the location."
+          />
+        ) : (
+          <WeatherReport report={currentWeatherReport} />
+        )}
+
+        <LocationInputForm onSubmit={updateLocation} />
+      </Col>
+
+      <Col span={8}>LIST</Col>
+    </Row>
   );
 };
 
