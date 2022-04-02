@@ -1,4 +1,4 @@
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Card } from "antd";
 
 const LocationInputForm = (props) => {
   const { onSubmit } = props;
@@ -9,50 +9,56 @@ const LocationInputForm = (props) => {
   }
 
   return (
-    <Form
-      style={{ maxWidth: "400px" }}
-      name="wrap"
-      labelCol={{
-        flex: "110px",
-      }}
-      labelAlign="left"
-      labelWrap
-      wrapperCol={{
-        flex: 1,
-      }}
-      colon={false}
-      onFinish={onFormSubmit}
+    <Card
+      style={{ maxWidth: "700px", margin: "20px" }}
+      hoverable={true}
+      bordered={true}
     >
-      <Form.Item
-        label="Latitude"
-        name="lat"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
+      <Form
+        style={{ maxWidth: "400px" }}
+        name="wrap"
+        labelCol={{
+          flex: "110px",
+        }}
+        labelAlign="left"
+        labelWrap
+        wrapperCol={{
+          flex: 1,
+        }}
+        colon={false}
+        onFinish={onFormSubmit}
       >
-        <Input type="number" />
-      </Form.Item>
+        <Form.Item
+          label="Latitude"
+          name="lat"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input type="number" />
+        </Form.Item>
 
-      <Form.Item
-        label="Longitude"
-        name="lon"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input type="number" />
-      </Form.Item>
+        <Form.Item
+          label="Longitude"
+          name="lon"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input type="number" />
+        </Form.Item>
 
-      <Form.Item label=" ">
-        <Button type="primary" htmlType="submit">
-          View Weather
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item label=" ">
+          <Button type="primary" htmlType="submit">
+            View Weather
+          </Button>
+        </Form.Item>
+      </Form>
+    </Card>
   );
 };
 
