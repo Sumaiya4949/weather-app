@@ -33,6 +33,6 @@ export const fetchCurrentWeather = async (lat, lon) => {
     country: country_code,
     state: state_code,
     city: city_name,
-    date: ob_time,
+    date: new Date(`${ob_time} UTC`).toLocaleString(),
   };
 };
