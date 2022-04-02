@@ -35,27 +35,18 @@ const CurrentWeatherPanel = (props) => {
     });
   }
 
-  async function getCurrentWeatherDataOfValidLocation() {
-    const weatherReport = await fetchCurrentWeather(
-      geoLocation.lat,
-      geoLocation.lon
-    );
-
-    setCurrentWeatherReport(weatherReport);
-  }
-
-  async function getWeatherForecastOfValidLocation() {
-    const weatherForecast = await fetchWeatherForecast(
-      geoLocation.lat,
-      geoLocation.lon
-    );
-
-    setWeatherForecastList(weatherForecast);
-  }
-
   useEffect(
     function () {
       if (geoLocation !== null) {
+        async function getCurrentWeatherDataOfValidLocation() {
+          const weatherReport = await fetchCurrentWeather(
+            geoLocation.lat,
+            geoLocation.lon
+          );
+
+          setCurrentWeatherReport(weatherReport);
+        }
+
         getCurrentWeatherDataOfValidLocation();
       }
     },
@@ -65,6 +56,15 @@ const CurrentWeatherPanel = (props) => {
   useEffect(
     function () {
       if (geoLocation !== null) {
+        async function getWeatherForecastOfValidLocation() {
+          const weatherForecast = await fetchWeatherForecast(
+            geoLocation.lat,
+            geoLocation.lon
+          );
+
+          setWeatherForecastList(weatherForecast);
+        }
+
         getWeatherForecastOfValidLocation();
       }
     },
