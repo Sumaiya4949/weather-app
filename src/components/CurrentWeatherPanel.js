@@ -24,9 +24,9 @@ const fakeForecast = [
 ];
 
 const CurrentWeatherPanel = (props) => {
-  const [currentWeatherReport, setCurrentWeatherReport] = useState(fakeReport);
+  const [currentWeatherReport, setCurrentWeatherReport] = useState(null);
   const [geoLocation, setGeoLocation] = useState(null);
-  const [weatherForecastList, setWeatherForecastList] = useState(fakeForecast);
+  const [weatherForecastList, setWeatherForecastList] = useState([]);
 
   function updateLocation(lat, lon) {
     setGeoLocation({

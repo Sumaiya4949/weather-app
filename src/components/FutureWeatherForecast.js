@@ -7,7 +7,7 @@ const FutureWeatherForecast = (props) => {
   const { forecastList } = props;
 
   return (
-    <Card style={{ margin: "20px" }}>
+    <Card style={{ margin: "20px", overflow: "auto", maxHeight: "95vh" }}>
       <List
         header={<Title level={3}>Weather forecast for next 5 days</Title>}
         dataSource={forecastList}
