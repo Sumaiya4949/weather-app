@@ -1,10 +1,10 @@
-import WeatherReport from "./WeatherReport";
 import "antd/dist/antd.css";
+import CurrentWeatherPanel from "./CurrentWeatherPanel";
 
 function App() {
   return (
     <div>
-      <WeatherReport />
+      <CurrentWeatherPanel />
     </div>
   );
 }
