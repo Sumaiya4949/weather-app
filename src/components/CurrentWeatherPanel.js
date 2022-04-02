@@ -3,6 +3,7 @@ import WeatherReport from "./WeatherReport";
 import LocationInputForm from "./LocationInputForm";
 import { Result, Row, Col } from "antd";
 import { fetchCurrentWeather } from "../utils/api";
+import WeatherSummery from "./WeatherSummery";
 
 const fakeData = {
   title: "Cloudy",
@@ -60,7 +61,13 @@ const CurrentWeatherPanel = (props) => {
         <LocationInputForm onSubmit={updateLocation} />
       </Col>
 
-      <Col span={8}>LIST</Col>
+      <Col span={8}>
+        <WeatherSummery
+          time="12:14"
+          date="20-20-2022"
+          iconUrl={"icons/a01d.png"}
+        />
+      </Col>
     </Row>
   );
 };
