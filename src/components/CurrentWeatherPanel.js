@@ -17,7 +17,7 @@ const fakeData = {
 };
 
 const CurrentWeatherPanel = (props) => {
-  const [currentWeatherReport, setCurrentWeatherReport] = useState(null);
+  const [currentWeatherReport, setCurrentWeatherReport] = useState(fakeData);
   const [geoLocation, setGeoLocation] = useState(null);
 
   function updateLocation(lat, lon) {
