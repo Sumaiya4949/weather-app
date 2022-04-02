@@ -4,8 +4,8 @@ const LocationInputForm = (props) => {
   const { onSubmit } = props;
 
   function onFormSubmit(formValues) {
-    const { lat, long } = formValues;
-    onSubmit(parseFloat(lat), parseFloat(long));
+    const { lat, lon } = formValues;
+    onSubmit(lat, lon);
   }
 
   return (
@@ -37,7 +37,7 @@ const LocationInputForm = (props) => {
 
       <Form.Item
         label="Longitude"
-        name="long"
+        name="lon"
         rules={[
           {
             required: true,

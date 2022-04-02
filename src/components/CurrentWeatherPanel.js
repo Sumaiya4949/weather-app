@@ -2,35 +2,32 @@ import { useEffect, useState } from "react";
 import WeatherReport from "./WeatherReport";
 import LocationInputForm from "./LocationInputForm";
 import { Result } from "antd";
-
-const fakeData = {
-  title: "Cloudy",
-  temperature: 60,
-  imgUrl:
-    "https://nordicapis.com/wp-content/uploads/5-Best-Free-and-Paid-Weather-APIs-2019-e1587582023501.png",
-  humidity: 100,
-  airPressure: 76,
-  country: "Germany",
-  state: "Saxony",
-  city: "Chemnitz",
-  date: "10.12.2022",
-};
+import { fetchCurrentWeather } from "../utils/api";
 
 const CurrentWeatherPanel = (props) => {
   const [currentWeatherReport, setCurrentWeatherReport] = useState(null);
   const [geoLocation, setGeoLocation] = useState(null);
 
-  function updateLocation(lat, long) {
+  function updateLocation(lat, lon) {
     setGeoLocation({
       lat,
-      long,
+      lon,
     });
   }
 
+  async function getCurrentWeatherDataOfValidLocation() {
+    const weatherReport = await fetchCurrentWeather(
+      geoLocation.lat,
+      geoLocation.lon
+    );
+
+    setCurrentWeatherReport(weatherReport);
+  }
+
   useEffect(
-    function fetchCurrentWeather() {
+    function () {
       if (geoLocation !== null) {
-        console.log("fetching weather data");
+        getCurrentWeatherDataOfValidLocation();
       }
     },
     [geoLocation]
