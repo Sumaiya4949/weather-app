@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import WeatherReport from "./WeatherReport";
 import LocationInputForm from "./LocationInputForm";
 import { Result, Row, Col, Card } from "antd";
-import { fetchCurrentWeather } from "../utils/api";
+import { fetchCurrentWeather, fetchWeatherForecast } from "../utils/api";
 import FutureWeatherForecast from "./FutureWeatherForecast";
 
-const fakeData = {
+const fakeReport = {
   title: "Cloudy",
   temperature: 60,
   imgUrl: "icons/s04d.png",
@@ -17,9 +17,16 @@ const fakeData = {
   date: "10.12.2022",
 };
 
+const fakeForecast = [
+  { date: "12.12.2022", time: "13:20", iconUrl: "icons/a01d.png" },
+  { date: "12.12.2022", time: "13:20", iconUrl: "icons/a01d.png" },
+  { date: "12.12.2022", time: "13:20", iconUrl: "icons/a01d.png" },
+];
+
 const CurrentWeatherPanel = (props) => {
-  const [currentWeatherReport, setCurrentWeatherReport] = useState(null);
+  const [currentWeatherReport, setCurrentWeatherReport] = useState(fakeReport);
   const [geoLocation, setGeoLocation] = useState(null);
+  const [weatherForecastList, setWeatherForecastList] = useState(fakeForecast);
 
   function updateLocation(lat, lon) {
     setGeoLocation({
@@ -37,10 +44,28 @@ const CurrentWeatherPanel = (props) => {
     setCurrentWeatherReport(weatherReport);
   }
 
+  async function getWeatherForecastOfValidLocation() {
+    const weatherForecast = await fetchWeatherForecast(
+      geoLocation.lat,
+      geoLocation.lon
+    );
+
+    setWeatherForecastList(weatherForecast);
+  }
+
   useEffect(
     function () {
       if (geoLocation !== null) {
         getCurrentWeatherDataOfValidLocation();
+      }
+    },
+    [geoLocation]
+  );
+
+  useEffect(
+    function () {
+      if (geoLocation !== null) {
+        getWeatherForecastOfValidLocation();
       }
     },
     [geoLocation]
@@ -61,13 +86,7 @@ const CurrentWeatherPanel = (props) => {
       </Col>
 
       <Col span={8}>
-        <FutureWeatherForecast
-          forecastList={[
-            { date: "12.12.2022", time: "13:20", iconUrl: "icons/a01d.png" },
-            { date: "12.12.2022", time: "13:20", iconUrl: "icons/a01d.png" },
-            { date: "12.12.2022", time: "13:20", iconUrl: "icons/a01d.png" },
-          ]}
-        />
+        <FutureWeatherForecast forecastList={weatherForecastList} />
       </Col>
     </Row>
   );
