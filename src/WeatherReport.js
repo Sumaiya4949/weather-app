@@ -1,27 +1,34 @@
 import { Card } from "antd";
 
 const WeatherReport = (props) => {
+  const {
+    title,
+    temperature,
+    imgUrl,
+    humidity,
+    airPressure,
+    country,
+    state,
+    city,
+    date,
+  } = props;
+
   return (
     <div className="site-card-border-less-wrapper">
       <Card
-        title="Warm and Sunny"
+        title={title}
         style={{ width: 300 }}
         hoverable={true}
         bordered={true}
-        cover={
-          <img
-            alt="example"
-            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-          />
-        }
+        cover={<img alt="example" src={imgUrl} />}
       >
-        <p>Temperature: 60°c</p>
-        <p>Humidity: 100</p>
-        <p>Airpressure: 20</p>
-        <p>Country: Germany</p>
-        <p>State: Saxony</p>
-        <p>City: Chemnitz</p>
-        <p>Date: 10.10.2020</p>
+        <p>Temperature: {temperature}°c</p>
+        <p>Humidity: {humidity}</p>
+        <p>Airpressure: {airPressure}</p>
+        <p>Country: {country}</p>
+        <p>State: {state}</p>
+        <p>City: {city}</p>
+        <p>Date: {date}</p>
       </Card>
     </div>
   );
