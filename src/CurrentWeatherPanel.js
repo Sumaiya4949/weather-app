@@ -1,6 +1,7 @@
 import { useState } from "react";
 import WeatherReport from "./WeatherReport";
 import LocationInputForm from "./LocationInputForm";
+import { Result } from "antd";
 
 const fakeData = {
   title: "Cloudy",
@@ -16,7 +17,7 @@ const fakeData = {
 };
 
 const CurrentWeatherPanel = (props) => {
-  const [currentWeatherReport, setCurrentWeatherReport] = useState(fakeData);
+  const [currentWeatherReport, setCurrentWeatherReport] = useState(null);
   const [geoLocation, setGeoLocation] = useState(null);
 
   function updateLocation(lat, long) {
@@ -28,7 +29,14 @@ const CurrentWeatherPanel = (props) => {
 
   return (
     <div>
-      <WeatherReport report={currentWeatherReport} />
+      {currentWeatherReport === null ? (
+        <Result
+          status="warning"
+          title="No weather report available for the location."
+        />
+      ) : (
+        <WeatherReport report={currentWeatherReport} />
+      )}
       <LocationInputForm onSubmit={updateLocation} />
     </div>
   );
