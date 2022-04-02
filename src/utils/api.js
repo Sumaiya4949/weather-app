@@ -36,3 +36,29 @@ export const fetchCurrentWeather = async (lat, lon) => {
     date: new Date(`${ob_time} UTC`).toLocaleString(),
   };
 };
+
+export const fetchWeatherForecast = async (lat, lon) => {
+  const options = {
+    method: "GET",
+    url: "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly",
+    params: { lat, lon },
+    headers: {
+      "X-RapidAPI-Host": "weatherbit-v1-mashape.p.rapidapi.com",
+      "X-RapidAPI-Key": "bb29522670msh0402d45c1403232p17d564jsne48a9a2766ab",
+    },
+  };
+
+  const response = await axios.request(options);
+  const forecast = response.data.data;
+  const processedForecast = forecast.map((item) => {
+    const [date, time] = item.timestamp_local.split("T");
+
+    return {
+      iconUrl: `icons/${item.weather.icon}.png`,
+      date,
+      time,
+    };
+  });
+
+  return processedForecast;
+};
