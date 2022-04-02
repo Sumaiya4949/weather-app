@@ -3,6 +3,11 @@ import { Form, Input, Button } from "antd";
 const LocationInputForm = (props) => {
   const { onSubmit } = props;
 
+  function onFormSubmit(formValues) {
+    const { lat, long } = formValues;
+    onSubmit(parseFloat(lat), parseFloat(long));
+  }
+
   return (
     <Form
       style={{ maxWidth: "400px" }}
@@ -16,10 +21,7 @@ const LocationInputForm = (props) => {
         flex: 1,
       }}
       colon={false}
-      onFinish={(formValues) => {
-        const { lat, long } = formValues;
-        onSubmit(parseFloat(lat), parseFloat(long));
-      }}
+      onFinish={onFormSubmit}
     >
       <Form.Item
         label="Latitude"

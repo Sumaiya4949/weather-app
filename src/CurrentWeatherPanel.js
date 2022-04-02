@@ -1,5 +1,6 @@
 import { useState } from "react";
 import WeatherReport from "./WeatherReport";
+import LocationInputForm from "./LocationInputForm";
 
 const fakeData = {
   title: "Cloudy",
@@ -16,8 +17,21 @@ const fakeData = {
 
 const CurrentWeatherPanel = (props) => {
   const [currentWeatherReport, setCurrentWeatherReport] = useState(fakeData);
+  const [geoLocation, setGeoLocation] = useState(null);
 
-  return <WeatherReport report={currentWeatherReport} />;
+  function updateLocation(lat, long) {
+    setGeoLocation({
+      lat,
+      long,
+    });
+  }
+
+  return (
+    <div>
+      <WeatherReport report={currentWeatherReport} />
+      <LocationInputForm onSubmit={updateLocation} />
+    </div>
+  );
 };
 
 export default CurrentWeatherPanel;
