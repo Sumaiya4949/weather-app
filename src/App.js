@@ -1,5 +1,6 @@
 import "antd/dist/antd.css";
 import { Layout, Menu } from "antd";
+import { useState } from "react";
 import CurrentWeatherPanel from "./components/CurrentWeatherPanel";
 import "./styles/App.css";
 import MyLocationWeather from "./pages/MyLocationWeather";
@@ -7,11 +8,22 @@ import MyLocationWeather from "./pages/MyLocationWeather";
 const { Header, Content, Footer } = Layout;
 
 function App() {
+  const [menuKey, setMenuKey] = useState("2");
+
+  const handleMenuChange = (arg) => {
+    setMenuKey(arg.key);
+  };
+
   return (
     <Layout>
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
         <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
+        <Menu
+          onClick={handleMenuChange}
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["2"]}
+        >
           <Menu.Item key="1">My Location</Menu.Item>
           <Menu.Item key="2">Any Location</Menu.Item>
         </Menu>
@@ -24,8 +36,7 @@ function App() {
           className="site-layout-background"
           style={{ padding: 24, minHeight: 380 }}
         >
-          <MyLocationWeather />
-          <CurrentWeatherPanel />
+          {menuKey === "1" ? <MyLocationWeather /> : <CurrentWeatherPanel />}
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
