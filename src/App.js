@@ -2,6 +2,7 @@ import "antd/dist/antd.css";
 import { Layout, Menu } from "antd";
 import CurrentWeatherPanel from "./components/CurrentWeatherPanel";
 import "./styles/App.css";
+import MyLocationWeather from "./pages/MyLocationWeather";
 
 const { Header, Content, Footer } = Layout;
 
@@ -23,6 +24,7 @@ function App() {
           className="site-layout-background"
           style={{ padding: 24, minHeight: 380 }}
         >
+          <MyLocationWeather />
           <CurrentWeatherPanel />
         </div>
       </Content>
