@@ -23,7 +23,7 @@ export const fetchCurrentWeather = async (lat, lon) => {
     params: { lon, lat },
     headers: {
       "X-RapidAPI-Host": "weatherbit-v1-mashape.p.rapidapi.com",
-      "X-RapidAPI-Key": "bb29522670msh0402d45c1403232p17d564jsne48a9a2766ab",
+      "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
     },
   };
 
@@ -68,7 +68,7 @@ export const fetchWeatherForecast = async (lat, lon) => {
     params: { lat, lon },
     headers: {
       "X-RapidAPI-Host": "weatherbit-v1-mashape.p.rapidapi.com",
-      "X-RapidAPI-Key": "bb29522670msh0402d45c1403232p17d564jsne48a9a2766ab",
+      "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
     },
   };
 
