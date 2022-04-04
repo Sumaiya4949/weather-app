@@ -52,7 +52,6 @@ const WeatherReport = (props) => {
                 value={report.weather.temperature}
                 valueStyle={{ color: "#3f8600" }}
                 prefix={<AlertOutlined />}
-                suffix="°c"
               />
             </Card>
           </Col>
@@ -73,7 +72,6 @@ const WeatherReport = (props) => {
                 value={report.weather.airPressure}
                 valueStyle={{ color: "#3f8600" }}
                 prefix={<SwapOutlined />}
-                suffix="atm"
               />
             </Card>
           </Col>
