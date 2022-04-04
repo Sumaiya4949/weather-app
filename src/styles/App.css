@@ -1,2 +1,6 @@
-.App {
+.logo {
+  float: left;
+  padding: 10px 0 10px 0;
+  margin-right: 100px;
+  color: white !important;
 }
