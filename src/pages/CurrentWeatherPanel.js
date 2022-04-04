@@ -1,7 +1,7 @@
-import WeatherReport from "./WeatherReport";
-import LocationInputForm from "./LocationInputForm";
+import WeatherReport from "../components/WeatherReport";
+import LocationInputForm from "../components/LocationInputForm";
 import { Result, Row, Col, Card } from "antd";
-import FutureWeatherForecast from "./FutureWeatherForecast";
+import FutureWeatherForecast from "../components/FutureWeatherForecast";
 import { AntCloudOutlined } from "@ant-design/icons";
 import useWeatherData from "../hooks/useWeatherData";
 

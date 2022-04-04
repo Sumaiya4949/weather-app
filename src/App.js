@@ -1,7 +1,7 @@
 import "antd/dist/antd.css";
 import { Layout, Menu, Typography } from "antd";
 import { useState } from "react";
-import CurrentWeatherPanel from "./components/CurrentWeatherPanel";
+import CurrentWeatherPanel from "./pages/CurrentWeatherPanel";
 import "./styles/App.css";
 import MyLocationWeather from "./pages/MyLocationWeather";
 
