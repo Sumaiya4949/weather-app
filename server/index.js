@@ -1,5 +1,6 @@
 const express = require("express");
 const axios = require("axios");
+
 const app = express();
 const port = 5000;
 
@@ -20,10 +21,6 @@ function hasLocally(api, lat, lon) {
 function getLocally(api, lat, lon) {
   return responseMap[`${api}-${f(lat)}-${f(lon)}`];
 }
-
-app.get("/", (req, res) => {
-  res.send("<html><body><em>Hello World!</em></body></html>");
-});
 
 app.get("/weather-details-by-location", async (req, res) => {
   const { lat, lon, rapiKey } = req.query;
