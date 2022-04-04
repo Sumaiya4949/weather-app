@@ -1,20 +1,14 @@
 import "antd/dist/antd.css";
 import { Layout, Menu, Typography } from "antd";
-import { useState } from "react";
 import CurrentWeatherPanel from "./pages/CurrentWeatherPanel";
 import "./styles/App.css";
 import MyLocationWeather from "./pages/MyLocationWeather";
+import { Link, Route, Routes } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
 
 function App() {
-  const [menuKey, setMenuKey] = useState("2");
-
-  const handleMenuChange = (arg) => {
-    setMenuKey(arg.key);
-  };
-
   return (
     <Layout>
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
@@ -22,14 +16,13 @@ function App() {
           Weather App
         </Title>
 
-        <Menu
-          onClick={handleMenuChange}
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-        >
-          <Menu.Item key="1">My Location</Menu.Item>
-          <Menu.Item key="2">Any Location</Menu.Item>
+        <Menu theme="dark" mode="horizontal">
+          <Menu.Item key="1">
+            <Link to="">My Location</Link>
+          </Menu.Item>
+          <Menu.Item key="2">
+            <Link to="/bylocation">Any Location</Link>
+          </Menu.Item>
         </Menu>
       </Header>
 
@@ -41,7 +34,10 @@ function App() {
           className="site-layout-background"
           style={{ padding: 5, minHeight: 380 }}
         >
-          {menuKey === "1" ? <MyLocationWeather /> : <CurrentWeatherPanel />}
+          <Routes>
+            <Route path="/bylocation" element={<CurrentWeatherPanel />} />
+            <Route path="/" element={<MyLocationWeather />} />
+          </Routes>
         </div>
       </Content>
 
