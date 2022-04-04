@@ -5,7 +5,7 @@ import FutureWeatherForecast from "../components/FutureWeatherForecast";
 import { AntCloudOutlined } from "@ant-design/icons";
 import useWeatherData from "../hooks/useWeatherData";
 
-const CurrentWeatherPanel = () => {
+const AnyLocationWeatherPanel = () => {
   const { currentWeatherReport, weatherForecastList, updateLocation } =
     useWeatherData();
 
@@ -33,4 +33,4 @@ const CurrentWeatherPanel = () => {
   );
 };
 
-export default CurrentWeatherPanel;
+export default AnyLocationWeatherPanel;

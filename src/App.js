@@ -1,6 +1,6 @@
 import "antd/dist/antd.css";
 import { Layout, Menu, Typography } from "antd";
-import CurrentWeatherPanel from "./pages/CurrentWeatherPanel";
+import AnyLocationWeatherPanel from "./pages/AnyLocationWeatherPanel";
 import "./styles/App.css";
 import MyLocationWeather from "./pages/MyLocationWeather";
 import { Link, Route, Routes } from "react-router-dom";
@@ -35,7 +35,7 @@ function App() {
           style={{ padding: 5, minHeight: 380 }}
         >
           <Routes>
-            <Route path="/bylocation" element={<CurrentWeatherPanel />} />
+            <Route path="/bylocation" element={<AnyLocationWeatherPanel />} />
             <Route path="/" element={<MyLocationWeather />} />
           </Routes>
         </div>
