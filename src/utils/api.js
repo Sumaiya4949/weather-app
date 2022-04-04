@@ -1,15 +1,19 @@
 import axios from "axios";
 
+function f(coord) {
+  return parseInt(coord * 1000, 10) / 1000;
+}
+
 function saveLocally(api, lat, lon, data) {
-  sessionStorage.setItem(`${api}-${lat}-${lon}`, JSON.stringify(data));
+  sessionStorage.setItem(`${api}-${f(lat)}-${f(lon)}`, JSON.stringify(data));
 }
 
 function hasLocally(api, lat, lon) {
-  return !!sessionStorage.getItem(`${api}-${lat}-${lon}`);
+  return !!sessionStorage.getItem(`${api}-${f(lat)}-${f(lon)}`);
 }
 
 function getLocally(api, lat, lon) {
-  return JSON.parse(sessionStorage.getItem(`${api}-${lat}-${lon}`));
+  return JSON.parse(sessionStorage.getItem(`${api}-${f(lat)}-${f(lon)}`));
 }
 
 export const fetchCurrentWeather = async (lat, lon) => {
