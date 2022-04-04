@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
 import WeatherReport from "./WeatherReport";
 import LocationInputForm from "./LocationInputForm";
 import { Result, Row, Col, Card } from "antd";
-import { fetchCurrentWeather, fetchWeatherForecast } from "../utils/api";
 import FutureWeatherForecast from "./FutureWeatherForecast";
 import { AntCloudOutlined } from "@ant-design/icons";
 import useWeatherData from "../hooks/useWeatherData";
 
-const CurrentWeatherPanel = (props) => {
+const CurrentWeatherPanel = () => {
   const { currentWeatherReport, weatherForecastList, updateLocation } =
     useWeatherData();
 
