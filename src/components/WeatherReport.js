@@ -34,7 +34,7 @@ const WeatherReport = (props) => {
         bordered={true}
       >
         <Row gutter={16}>
-          <Col span={8}>
+          <Col sm={24} md={8}>
             <Card>
               <Statistic
                 title="Temperature"
@@ -45,7 +45,7 @@ const WeatherReport = (props) => {
               />
             </Card>
           </Col>
-          <Col span={8}>
+          <Col sm={24} md={8}>
             <Card>
               <Statistic
                 title="Relative Humidity"
@@ -55,7 +55,7 @@ const WeatherReport = (props) => {
               />
             </Card>
           </Col>
-          <Col span={8}>
+          <Col sm={24} md={8}>
             <Card>
               <Statistic
                 title="Air Pressure"

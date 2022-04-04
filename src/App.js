@@ -35,11 +35,11 @@ function App() {
 
       <Content
         className="site-layout"
-        style={{ padding: "0 50px", marginTop: 64 }}
+        style={{ padding: "10px", marginTop: 64 }}
       >
         <div
           className="site-layout-background"
-          style={{ padding: 24, minHeight: 380 }}
+          style={{ padding: 5, minHeight: 380 }}
         >
           {menuKey === "1" ? <MyLocationWeather /> : <CurrentWeatherPanel />}
         </div>

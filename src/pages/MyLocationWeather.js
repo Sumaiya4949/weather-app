@@ -20,7 +20,7 @@ const MyLocationWeather = () => {
 
   return (
     <Row>
-      <Col span={16}>
+      <Col md={24} lg={16}>
         {currentWeatherReport === null ? (
           <Card style={{ margin: "20px" }}>
             <Result
@@ -33,7 +33,7 @@ const MyLocationWeather = () => {
         )}
       </Col>
 
-      <Col span={8}>
+      <Col md={24} lg={8}>
         <FutureWeatherForecast forecastList={weatherForecastList} />
       </Col>
     </Row>
