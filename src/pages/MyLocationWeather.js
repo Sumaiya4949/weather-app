@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import WeatherReport from "../components/WeatherReport";
 import { Result, Row, Col, Card } from "antd";
 import FutureWeatherForecast from "../components/FutureWeatherForecast";
@@ -9,10 +9,13 @@ const MyLocationWeather = () => {
   const { currentWeatherReport, weatherForecastList, updateLocation } =
     useWeatherData();
 
-  function handleGeoLocation(location) {
-    const { latitude, longitude } = location.coords;
-    updateLocation(latitude, longitude);
-  }
+  const handleGeoLocation = useCallback(
+    (location) => {
+      const { latitude, longitude } = location.coords;
+      updateLocation(latitude, longitude);
+    },
+    [updateLocation]
+  );
 
   useEffect(function () {
     navigator.geolocation.getCurrentPosition(handleGeoLocation);

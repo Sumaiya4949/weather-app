@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { fetchCurrentWeather, fetchWeatherForecast } from "../utils/api";
 
 const fakeReport = {
@@ -24,12 +24,12 @@ const useWeatherData = () => {
   const [geoLocation, setGeoLocation] = useState(null);
   const [weatherForecastList, setWeatherForecastList] = useState([]);
 
-  function updateLocation(lat, lon) {
+  const updateLocation = useCallback((lat, lon) => {
     setGeoLocation({
       lat,
       lon,
     });
-  }
+  }, []);
 
   useEffect(
     function () {

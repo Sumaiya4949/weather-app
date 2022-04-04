@@ -1,12 +1,16 @@
 import { Form, Input, Button, Card } from "antd";
+import { useCallback } from "react";
 
 const LocationInputForm = (props) => {
   const { onSubmit } = props;
 
-  function onFormSubmit(formValues) {
-    const { lat, lon } = formValues;
-    onSubmit(lat, lon);
-  }
+  const onFormSubmit = useCallback(
+    (formValues) => {
+      const { lat, lon } = formValues;
+      onSubmit(lat, lon);
+    },
+    [onSubmit]
+  );
 
   return (
     <Card style={{ margin: "20px" }} hoverable={true} bordered={true}>
