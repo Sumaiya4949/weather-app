@@ -30,8 +30,10 @@ const WeatherReport = (props) => {
         style={themeProperties}
         title={
           <Meta
-            avatar={<Avatar src={report.imgUrl} size={100} />}
-            title={<Title style={themeProperties}>{report.title}</Title>}
+            avatar={<Avatar src={report.weather.imgUrl} size={100} />}
+            title={
+              <Title style={themeProperties}>{report.weather.title}</Title>
+            }
             description={
               <Title level={4} style={themeProperties}>
                 Current weather report at specified location
@@ -47,7 +49,7 @@ const WeatherReport = (props) => {
             <Card style={themeProperties}>
               <Statistic
                 title="Temperature"
-                value={report.temperature}
+                value={report.weather.temperature}
                 valueStyle={{ color: "#3f8600" }}
                 prefix={<AlertOutlined />}
                 suffix="°c"
@@ -58,7 +60,7 @@ const WeatherReport = (props) => {
             <Card style={themeProperties}>
               <Statistic
                 title="Relative Humidity"
-                value={report.humidity}
+                value={report.weather.relativeHumidity}
                 valueStyle={{ color: "#3f8600" }}
                 prefix={<ExperimentOutlined />}
               />
@@ -68,7 +70,7 @@ const WeatherReport = (props) => {
             <Card style={themeProperties}>
               <Statistic
                 title="Air Pressure"
-                value={report.airPressure}
+                value={report.weather.airPressure}
                 valueStyle={{ color: "#3f8600" }}
                 prefix={<SwapOutlined />}
                 suffix="atm"
@@ -81,11 +83,15 @@ const WeatherReport = (props) => {
 
         <Descriptions title="Location Info">
           <Descriptions.Item label="Country">
-            {report.country}
+            {report.locationDetails.country}
           </Descriptions.Item>
-          <Descriptions.Item label="State">{report.state}</Descriptions.Item>
-          <Descriptions.Item label="City">{report.city}</Descriptions.Item>
-          <Descriptions.Item label="When">{report.date}</Descriptions.Item>
+          <Descriptions.Item label="State">
+            {report.locationDetails.state}
+          </Descriptions.Item>
+          <Descriptions.Item label="City">
+            {report.locationDetails.city}
+          </Descriptions.Item>
+          <Descriptions.Item label="When">{report.datetime}</Descriptions.Item>
         </Descriptions>
       </Card>
     </div>

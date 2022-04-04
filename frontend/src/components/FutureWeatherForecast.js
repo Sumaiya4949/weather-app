@@ -27,7 +27,7 @@ const FutureWeatherForecast = (props) => {
             <WeatherSummery
               time={item.time}
               date={item.date}
-              iconUrl={item.iconUrl}
+              imgUrl={item.imgUrl}
               style={themeProperties}
             />
           </List.Item>

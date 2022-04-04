@@ -11,6 +11,7 @@ app.get("/weather-details-by-location", (req, res) => {
 
   res.send({
     weather: {
+      title: "Very cloudy",
       temperature: "50°c",
       relativeHumidity: "100",
       airPressure: "1000atm",
@@ -23,6 +24,28 @@ app.get("/weather-details-by-location", (req, res) => {
     },
     datetime: "12-12-12",
   });
+});
+
+app.get("/weather-forecast-by-location", (req, res) => {
+  const { lat, lon, rapidKey } = req.params;
+
+  res.send([
+    {
+      imgUrl: "icons/s04d.png",
+      date: "20-20-2022",
+      time: "13:15",
+    },
+    {
+      imgUrl: "icons/s04d.png",
+      date: "20-20-2022",
+      time: "13:15",
+    },
+    {
+      imgUrl: "icons/s04d.png",
+      date: "20-20-2022",
+      time: "13:15",
+    },
+  ]);
 });
 
 app.listen(port, () => {

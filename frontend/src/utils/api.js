@@ -17,6 +17,17 @@ function getLocally(api, lat, lon) {
 }
 
 export const fetchCurrentWeather = async (lat, lon) => {
+  const options = {
+    method: "GET",
+    url: "http://localhost:3000/weather-details-by-location",
+    params: { lat, lon, rapiKey: process.env.REACT_APP_RAPID_API_KEY },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
+
+export const fetchCurrentWeather_old = async (lat, lon) => {
   if (hasLocally("current-weather", lat, lon)) {
     return getLocally("current-weather", lat, lon);
   }
@@ -62,6 +73,17 @@ export const fetchCurrentWeather = async (lat, lon) => {
 };
 
 export const fetchWeatherForecast = async (lat, lon) => {
+  const options = {
+    method: "GET",
+    url: "http://localhost:3000/weather-forecast-by-location",
+    params: { lat, lon, rapiKey: process.env.REACT_APP_RAPID_API_KEY },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
+
+export const fetchWeatherForecast_old = async (lat, lon) => {
   if (hasLocally("forecast", lat, lon)) {
     return getLocally("forecast", lat, lon);
   }
@@ -82,7 +104,7 @@ export const fetchWeatherForecast = async (lat, lon) => {
     const [date, time] = item.timestamp_local.split("T");
 
     return {
-      iconUrl: `icons/${item.weather.icon}.png`,
+      imgUrl: `icons/${item.weather.icon}.png`,
       date,
       time,
     };
